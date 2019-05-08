@@ -59,7 +59,7 @@ class Peli() {
     fun heitä() {
         if (voiHeittää()) {
             nopat.heitä()
-            nopat.vapauta()
+            //nopat.vapauta()
             heitto++
             println("Kierros ${kierros}, heitto ${heitto}: ${nopat.tulostaNopat()}")
         }
@@ -245,7 +245,7 @@ class Lappu {
 class Alakerta(sarake: Sarake) {
     val sarake = sarake
 
-    var tulokset: List<AlakerranMerkintä> = listOf(Pari(), KaksiParia(), Kolmiluku(), Neliluku(), Pikkusuora(), Isosuora(), Summa(), Mökki(), Jatsi())
+    var tulokset: List<AlakerranMerkintä> = listOf(Pari(), KaksiParia(), Kolmiluku(), Neliluku(), Mökki(), Isosuora(), Pikkusuora(), Summa(), Jatsi())
 
     fun annaTulos(heitto: AlakerranMerkintä) = tulokset[heitto.järjestys - 7]
 
@@ -403,7 +403,7 @@ abstract class Suora() : AlakerranMerkintä() {
 }
 
 class Pikkusuora() : Suora() {
-    override val järjestys = 11
+    override val järjestys = 13
     override val a = 1
     override val b = 5
     override fun otsake() = "Pikkusuora"
@@ -417,13 +417,13 @@ class Isosuora() : Suora() {
 }
 
 class Summa() : AlakerranMerkintä() {
-    override val järjestys = 13
+    override val järjestys = 14
     override fun pisteetHeitolla(nopat: List<Int>) = nopat.sum()
     override fun otsake() = "Summa"
 }
 
 class Mökki() : AlakerranMerkintä() {
-    override val järjestys = 14
+    override val järjestys = 11
     override fun pisteetHeitolla(nopat: List<Int>): Int {
         val osat = nopat.groupBy { it }
         if (osat.count() != 2) {
